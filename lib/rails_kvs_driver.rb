@@ -75,7 +75,7 @@ module RailsKvsDriver
     # delete all keys from kvs.
     # @return [Boolean] result.
     # @abstract delete all keys from kvs.
-    def delete_all(key)
+    def delete_all
       raise NoMethodError
     end
 
@@ -123,7 +123,7 @@ module RailsKvsDriver
     # @param member [String]  member of sorted set.
     # @return [Float] score of member.
     # @abstract get the score of member.
-    def get_sorted_set_score(key, member)
+    def sorted_set_score(key, member)
       raise NoMethodError
     end
 
@@ -136,7 +136,7 @@ module RailsKvsDriver
     # @param reverse  [Boolean] order by desc
     # @return [Array<String, Float>>] array of the member and score.
     # @abstract get array of sorted set.
-    def get_sorted_set(key, start=0, stop=-1, reverse=false)
+    def sorted_set(key, start=0, stop=-1, reverse=false)
       raise NoMethodError
     end
 

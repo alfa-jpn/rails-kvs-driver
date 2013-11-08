@@ -25,52 +25,57 @@ describe RailsKvsDriver do
   end
 
   it 'raise NoMethodError when does not override []' do
-    expect{MockDriver.new.respond_to?('[]')}.to be_true
+    expect(MockDriver.method_defined?('[]')).to be_true
     expect{MockDriver.new['a']}.to raise_error
   end
 
   it 'raise NoMethodError when does not override []=' do
-    expect{MockDriver.new.respond_to?('[]=')}.to be_true
+    expect(MockDriver.method_defined?('[]=')).to be_true
     expect{MockDriver.new['a']='b'}.to raise_error
   end
 
   it 'raise NoMethodError when does not override all_keys' do
-    expect{MockDriver.new.respond_to?(:all_keys)}.to be_true
+    expect(MockDriver.method_defined?(:all_keys)).to be_true
     expect{MockDriver.new.all_keys}.to raise_error
   end
 
   it 'raise NoMethodError when does not override delete' do
-    expect{MockDriver.new.respond_to?(:delete)}.to be_true
+    expect(MockDriver.method_defined?(:delete)).to be_true
     expect{MockDriver.new.delete}.to raise_error
   end
 
   it 'raise NoMethodError when does not override delete_all' do
-    expect{MockDriver.new.respond_to?(:delete_all)}.to be_true
+    expect(MockDriver.method_defined?(:delete_all)).to be_true
     expect{MockDriver.new.delete_all}.to raise_error
   end
 
   it 'raise NoMethodError when does not override add_sorted_set' do
-    expect{MockDriver.new.respond_to?(:add_sorted_set)}.to be_true
+    expect(MockDriver.method_defined?(:add_sorted_set)).to be_true
     expect{MockDriver.new.add_sorted_set}.to raise_error
   end
 
   it 'raise NoMethodError when does not override remove_sorted_set' do
-    expect{MockDriver.new.respond_to?(:remove_sorted_set)}.to be_true
+    expect(MockDriver.method_defined?(:remove_sorted_set)).to be_true
     expect{MockDriver.new.remove_sorted_set}.to raise_error
   end
 
   it 'raise NoMethodError when does not override increment_sorted_set' do
-    expect{MockDriver.new.respond_to?(:increment_sorted_set)}.to be_true
+    expect(MockDriver.method_defined?(:increment_sorted_set)).to be_true
     expect{MockDriver.new.increment_sorted_set}.to raise_error
   end
 
-  it 'raise NoMethodError when does not override get_sorted_set' do
-    expect{MockDriver.new.respond_to?(:get_sorted_set)}.to be_true
-    expect{MockDriver.new.get_sorted_set}.to raise_error
+  it 'raise NoMethodError when does not override sorted_set_score' do
+    expect(MockDriver.method_defined?(:sorted_set_score)).to be_true
+    expect{MockDriver.new.sorted_set_score}.to raise_error
+  end
+
+  it 'raise NoMethodError when does not override sorted_set' do
+    expect(MockDriver.method_defined?(:sorted_set)).to be_true
+    expect{MockDriver.new.sorted_set}.to raise_error
   end
 
   it 'raise NoMethodError when does not override count_sorted_set_member' do
-    expect{MockDriver.new.respond_to?(:count_sorted_set_member)}.to be_true
+    expect(MockDriver.method_defined?(:count_sorted_set_member)).to be_true
     expect{MockDriver.new.count_sorted_set_member}.to raise_error
   end
 
