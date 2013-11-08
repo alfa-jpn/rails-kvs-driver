@@ -1,6 +1,6 @@
 # RailsKvsDriver
 
-TODO: Write a gem description
+rails kvs driver wrap access key-value store.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+comming soon.
 
 ## Contributing
 

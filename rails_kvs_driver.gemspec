@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RailsKvsDriver::VERSION
   spec.authors       = ["alfa-jpn"]
   spec.email         = ["a.nkmr.ja@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "rails kvs driver wrap access key-value store."
+  spec.summary       = "rails kvs driver wrap access key-value store."
   spec.homepage      = "https://github.com/alfa-jpn/rails-kvs-driver"
   spec.license       = "MIT"
 
@@ -22,4 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "yard"
+
+  spec.add_dependency "connection_pool"
 end
