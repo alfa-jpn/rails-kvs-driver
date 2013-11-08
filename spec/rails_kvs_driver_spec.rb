@@ -151,5 +151,33 @@ describe RailsKvsDriver do
       expect(MockDriver::DriverConnectionPool['MockDriver2'][0].has_key? :pool).to    be_true
     end
 
+    it 'call each_sorted_set' do
+      class MockDriverEachTest < MockDriver
+        def sorted_set(key, start, stop, reverse)
+          count  = 0
+          result = Array.new
+          (start .. stop).each{ |num|
+            result.push ["example#{num}", count]
+            count += 1
+          }
+          return result
+        end
+        def count_sorted_set_member(*args)
+          100
+        end
+      end
+
+      MockDriverEachTest.session(@driver_config) do |instance|
+        count = 0
+        expect{
+          instance.each_sorted_set('test',false, 10) do |member, score, position|
+            expect(member).to   eq("example#{count}")
+            expect(score).to    eq(count%10)
+            expect(position).to eq(count)
+            count += 1
+          end
+        }.to change{count}.by(100)
+      end
+    end
   end
 end

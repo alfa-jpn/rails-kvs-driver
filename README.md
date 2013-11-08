@@ -16,6 +16,10 @@ Or install it yourself as:
 
     $ gem install rails_kvs_driver
 
+## Implementation
+
+* [rails_kvs_driver-redis_driver](https://github.com/alfa-jpn/rails_kvs_driver-redis_driver)
+
 ## Usage
 
 comming soon.

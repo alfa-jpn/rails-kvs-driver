@@ -133,7 +133,7 @@ module RailsKvsDriver
     # @param key      [String]  key of sorted set.
     # @param start    [Integer] start index
     # @param stop     [Integer] stop index
-    # @param reverse  [Boolean] order by desc
+    # @param reverse  [Boolean] order by desc.
     # @return [Array<String, Float>>] array of the member and score.
     # @abstract get array of sorted set.
     def sorted_set(key, start=0, stop=-1, reverse=false)
@@ -149,6 +149,22 @@ module RailsKvsDriver
       raise NoMethodError
     end
 
+    # execute the block of code for each member of sorted set.
+    # @param key      [String]  key of sorted set.
+    # @param reverse  [Boolean] order by desc.
+    # @param limit    [Integer] limit number to acquire at a time.
+    # @param &block   [{|member, score, position| }] each the block of code for each member of sorted set.
+    def each_sorted_set(key, reverse=false, limit=1000)
+      member_count    = count_sorted_set_member(key)
+      member_position = 0
+
+      while member_position < member_count
+        sorted_set(key, member_position, member_position + (limit-1), reverse).each do |data|
+          yield data[0], data[1], member_position
+          member_position += 1
+        end
+      end
+    end
 
     # connect kvs and exec block.
     # This function pools the connecting driver.
