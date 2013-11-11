@@ -12,7 +12,8 @@ describe RailsKvsDriver::SortedSet do
         get_sorted_set:          [[:a,:b],[:c,:d]],
         get_sorted_set_keys:     [:a,:b,:c],
         get_sorted_set_score:    100,
-        increment_sorted_set:    10
+        increment_sorted_set:    10,
+        remove_sorted_set:       true
     })
   end
 
@@ -23,6 +24,10 @@ describe RailsKvsDriver::SortedSet do
   it 'call []=' do
     expect((@driver.sorted_sets['hoge'])[0][0]).to eq(:a)
     expect(@driver.sorted_sets['hoge','fuga']).to eq(100)
+  end
+
+  it 'call count' do
+    expect(@driver.sorted_sets.count(:a)).to eq(100)
   end
 
   it 'call delete' do
@@ -62,5 +67,9 @@ describe RailsKvsDriver::SortedSet do
 
   it 'call length' do
     expect(@driver.sorted_sets.length).to eq(3)
+  end
+
+  it 'call remove' do
+    expect(@driver.sorted_sets.remove(:a, :b)).to be_true
   end
 end

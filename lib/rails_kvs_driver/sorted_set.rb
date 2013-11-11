@@ -34,7 +34,16 @@ module RailsKvsDriver
       return member_set
     end
 
+    # count member of sorted_set
+    #
+    # @param key [String] sorted_set key
+    def count(key)
+      @driver_instance.count_sorted_set_member(key)
+    end
+
     # delete key
+    #
+    # @param key [String] sorted_set key
     def delete(key)
       @driver_instance.delete(key)
     end
@@ -52,7 +61,7 @@ module RailsKvsDriver
     # @param limit    [Integer] limit number to acquire at a time.
     # @param &block   [{|member, score, position| }] each the block of code for each member of sorted set.
     def each_member(key, reverse=false, limit=1000)
-      member_count    = @driver_instance.count_sorted_set_member(key)
+      member_count    = count(key)
       member_position = 0
 
       while member_position < member_count
@@ -91,6 +100,14 @@ module RailsKvsDriver
     # get length of sorted_set.
     def length
       keys.length
+    end
+
+    # remove member of sorted_set
+    #
+    # @param key    [String] sorted_set key
+    # @param member [String] member of sorted_se
+    def remove(key, member)
+      @driver_instance.remove_sorted_set(key, member)
     end
   end
 end
