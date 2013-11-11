@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-comming soon.
+* [rails_kvs_driver-redis_driver](https://github.com/alfa-jpn/rails_kvs_driver-redis_driver)
 
 ## Contributing
 
