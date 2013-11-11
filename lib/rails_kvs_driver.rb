@@ -36,8 +36,8 @@ module RailsKvsDriver
 
     # get string value from kvs.
     # @param key [String] key.
-    # @return [String] value
-    # @abstract get value from kvs.
+    # @return [String] value. when doesn't exist, nil
+    # @abstract get value from kvs. when doesn't exist, nil
     def [](key)
       raise NoMethodError
     end
@@ -101,8 +101,8 @@ module RailsKvsDriver
     # @param start    [Integer] start index
     # @param stop     [Integer] stop index
     # @param reverse  [Boolean] order by desc.
-    # @return [Array<String, Float>>] array of the member and score.
-    # @abstract get array of sorted set.
+    # @return [Array<String, Float>>] array of the member and score. when doesn't exist, nil.
+    # @abstract get array of sorted set. when doesn't exist, nil.
     def get_sorted_set(key, start=0, stop=-1, reverse=false)
       raise NoMethodError
     end

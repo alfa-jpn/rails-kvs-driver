@@ -37,6 +37,10 @@ describe RailsKvsDriver::DefinedBaseMethod do
       }.to change{count}.by(3)
     end
 
+    it 'call has_key?' do
+      expect(@instance.has_key?(:a)).to be_true
+    end
+
     it 'call length' do
       expect(@instance.length).to eq(3)
     end

@@ -63,6 +63,14 @@ module RailsKvsDriver
       end
     end
 
+    # check key in sorted set
+    #
+    # @param key [String] key name
+    # @return [Boolean] result
+    def has_key?(key)
+      !(self[key].nil?)
+    end
+
     # increment member's score of sorted set.
     #
     # @param key    [String]  key of sorted set.

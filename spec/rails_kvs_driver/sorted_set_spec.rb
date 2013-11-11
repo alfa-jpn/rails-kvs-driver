@@ -56,6 +56,10 @@ describe RailsKvsDriver::SortedSet do
     expect(@driver.sorted_sets.keys.length).to eq(3)
   end
 
+  it 'call has_key?' do
+    expect(@driver.sorted_sets.has_key?(:a)).to be_true
+  end
+
   it 'call length' do
     expect(@driver.sorted_sets.length).to eq(3)
   end

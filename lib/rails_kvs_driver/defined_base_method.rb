@@ -21,6 +21,14 @@ module RailsKvsDriver
       keys.each {|key| yield key, self[key] }
     end
 
+    # check key in redis.
+    #
+    # @param key [String] key name
+    # @return [Boolean] result
+    def has_key?(key)
+      !(self[key].nil?)
+    end
+
     # get length of keys.
     def length
       keys.length
