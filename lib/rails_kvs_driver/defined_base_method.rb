@@ -11,6 +11,7 @@ module RailsKvsDriver
 
     # return initialized SortedSet class.
     #
+    # @return [RailsKvsDriver::SortedSet] SortedSet
     def sorted_sets
       RailsKvsDriver::SortedSet.new(self)
     end
@@ -30,6 +31,8 @@ module RailsKvsDriver
     end
 
     # get length of keys.
+    #
+    # @return [Integer]length of keys.
     def length
       keys.length
     end

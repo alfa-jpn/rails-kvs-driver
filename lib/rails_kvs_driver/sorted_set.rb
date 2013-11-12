@@ -72,12 +72,21 @@ module RailsKvsDriver
       end
     end
 
-    # check key in sorted set
+    # check key in sorted set.
     #
-    # @param key [String] key name
-    # @return [Boolean] result
+    # @param key [String] key name.
+    # @return [Boolean] result.
     def has_key?(key)
       !(self[key].nil?)
+    end
+
+    # check member in sorted set.
+    #
+    # @param key    [String] key name.
+    # @param member [String] member name.
+    # @return [Boolean] result.
+    def has_member?(key, member)
+      !(self[key, member].nil?)
     end
 
     # increment member's score of sorted set.
@@ -98,6 +107,8 @@ module RailsKvsDriver
     end
 
     # get length of sorted_set.
+    #
+    # @return [Integer] length of keys.
     def length
       keys.length
     end

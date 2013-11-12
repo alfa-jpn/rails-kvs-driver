@@ -24,6 +24,10 @@ Or install it yourself as:
 
 * [rails_kvs_driver-redis_driver](https://github.com/alfa-jpn/rails_kvs_driver-redis_driver)
 
+## API Document
+
+* [RailsKvsDriver](http://rubydoc.info/github/alfa-jpn/rails-kvs-driver/frames)
+
 ## Contributing
 
 1. Fork it

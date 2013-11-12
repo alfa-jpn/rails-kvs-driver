@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RailsKvsDriver::VERSION
   spec.authors       = ["alfa-jpn"]
   spec.email         = ["a.nkmr.ja@gmail.com"]
-  spec.description   = "rails kvs driver wrap access key-value store."
-  spec.summary       = "rails kvs driver wrap access key-value store."
+  spec.description   = "rails_kvs_driver is available to use namespace and connection pool and ruby-like methods of kvs."
+  spec.summary       = "rails_kvs_driver is available to use namespace and connection pool and ruby-like methods of kvs."
   spec.homepage      = "https://github.com/alfa-jpn/rails-kvs-driver"
   spec.license       = "MIT"
 
