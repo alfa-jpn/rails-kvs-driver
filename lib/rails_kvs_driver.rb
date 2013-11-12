@@ -89,7 +89,8 @@ module RailsKvsDriver
     # @note same as sorted set of redis. refer to redis.
     #
     # @param key [String]  key of sorted set.
-    # @return [Integer] members num
+    # @return [Integer] members num. when doesn't exist key, return nil
+    # @abstract count members of sorted set. when doesn't exist key, return nil
     def count_sorted_set_member(key)
       raise NoMethodError
     end
@@ -108,8 +109,8 @@ module RailsKvsDriver
     end
 
     # get all sorted_set keys.
-    # @return [Array<String>] array of key names.
-    # @abstract get all keys from kvs.(only having sorted_set)
+    # @return [Array<String>] array of key names. when doesn't exist keys, return Array of length 0.
+    # @abstract get all keys from kvs.(only having sorted_set), when doesn't exist keys, return Array of length 0.
     def get_sorted_set_keys
       raise NoMethodError
     end
@@ -119,8 +120,8 @@ module RailsKvsDriver
     #
     # @param key    [String]  key of sorted set.
     # @param member [String]  member of sorted set.
-    # @return [Float] score of member.
-    # @abstract get the score of member.
+    # @return [Float] score of member. when doesn't exist key or member, nil.
+    # @abstract get the score of member. when doesn't exist key or member, nil.
     def get_sorted_set_score(key, member)
       raise NoMethodError
     end
@@ -131,8 +132,8 @@ module RailsKvsDriver
     # @param key    [String]  key of sorted set.
     # @param member [String]  member of sorted set.
     # @param score  [Float]   increment score.
-    # @return [Float] value after increment
-    # @abstract increment score of member from sorted set.
+    # @return [Float] value after increment. when doesn't exist key or member, create.
+    # @abstract increment score of member from sorted set. when doesn't exist key or member, create.
     def increment_sorted_set(key, member, score)
       raise NoMethodError
     end
@@ -143,8 +144,8 @@ module RailsKvsDriver
     #
     # @param key    [String]  key of sorted set.
     # @param member [String]  member of sorted set.
-    # @return [Boolean] result.
-    # @abstract remove sorted set from kvs.
+    # @return [Boolean] result. when doesn't exist key or member, false.
+    # @abstract remove sorted set from kvs. when doesn't exist key or member, do nothing.
     def remove_sorted_set(key, member)
       raise NoMethodError
     end
