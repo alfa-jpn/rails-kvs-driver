@@ -7,14 +7,14 @@ describe RailsKvsDriver::Base do
     expect{RailsKvsDriver::Base.connect('dummy')}.to raise_error(NoMethodError)
   end
 
-  it 'raise NoMethodError when does not override []' do
-    expect(MockDriver.method_defined?('[]')).to be_true
-    expect{MockDriver.new(nil,nil)[nil]}.to raise_error(NoMethodError)
+  it 'raise NoMethodError when does not override get' do
+    expect(MockDriver.method_defined?('get')).to be_true
+    expect{MockDriver.new(nil,nil).get(nil)}.to raise_error(NoMethodError)
   end
 
-  it 'raise NoMethodError when does not override []=' do
-    expect(MockDriver.method_defined?('[]=')).to be_true
-    expect{MockDriver.new(nil,nil)[nil]=nil}.to raise_error(NoMethodError)
+  it 'raise NoMethodError when does not override set' do
+    expect(MockDriver.method_defined?('set')).to be_true
+    expect{MockDriver.new(nil,nil).set(nil,nil)}.to raise_error(NoMethodError)
   end
 
   it 'raise NoMethodError when does not override keys' do

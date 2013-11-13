@@ -29,7 +29,7 @@ module RailsKvsDriver
       def []=(key, member_sets)
         delete(key) if has_key?(key)
         sorted_set = SortedSet.new(@driver_instance,key)
-        member_sets.each {|member_set| sorted_set[member_set[0]] = member_set}
+        member_sets.each {|member_set| sorted_set[member_set[0]] = member_set[1]}
       end
 
       # delete sorted_set.
