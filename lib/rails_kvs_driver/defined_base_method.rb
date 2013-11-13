@@ -1,4 +1,5 @@
-require 'rails_kvs_driver/sorted_set'
+require 'rails_kvs_driver/sorted_sets/sorted_sets'
+
 module RailsKvsDriver
   module DefinedBaseMethod
     # initialize driver.
@@ -9,11 +10,28 @@ module RailsKvsDriver
       @driver_config = driver_config
     end
 
+    # get string value from kvs.
+    # @param key [String] key.
+    # @return [String] value. when doesn't exist, nil
+    # @abstract get value from kvs. when doesn't exist, nil
+    def [](key)
+      get(key)
+    end
+
+    # set string value to kvs.
+    # @param key    [String] key.
+    # @param value  [String] value.
+    # @return [Boolean] result
+    # @abstract set value to kvs.
+    def []=(key, value)
+      set(key, value)
+    end
+
     # return initialized SortedSet class.
     #
-    # @return [RailsKvsDriver::SortedSet] SortedSet
+    # @return [RailsKvsDriver::SortedSets] SortedSet
     def sorted_sets
-      RailsKvsDriver::SortedSet.new(self)
+      SortedSets::SortedSets.new(self)
     end
 
     # execute the block of code for each key having string, and value.

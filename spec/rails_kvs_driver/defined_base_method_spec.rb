@@ -15,7 +15,7 @@ describe RailsKvsDriver::DefinedBaseMethod do
 
   context 'call sorted_sets' do
     it 'return instance of RailsKvsDriver::SortedSet' do
-      expect(MockDriver.new(nil,nil).sorted_sets.instance_of?(RailsKvsDriver::SortedSet)).to be_true
+      expect(MockDriver.new(nil,nil).sorted_sets.instance_of?(RailsKvsDriver::SortedSets::SortedSets)).to be_true
     end
   end
 

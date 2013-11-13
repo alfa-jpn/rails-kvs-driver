@@ -26,17 +26,17 @@ shared_examples_for 'RailsKvsDriver example' do |driver_class, driver_config|
     end
 
     context 'override methods' do
-      it 'call []' do
+      it 'call get' do
         driver_class::session(driver_config) do |kvs|
-          kvs['example'] = 'nico-nico'
-          expect(kvs['example']).to  eq('nico-nico')
-          expect(kvs['nothing key']).to be_nil
+          kvs.set('example', 'nico-nico')
+          expect(kvs.get('example')).to  eq('nico-nico')
+          expect(kvs.get('nothing key')).to be_nil
         end
       end
 
-      it 'call []=' do
+      it 'call set' do
         driver_class::session(driver_config) do |kvs|
-          expect{ kvs['example'] = 'nico-nico' }.to change{ kvs.keys.length }.by(1)
+          expect{ kvs.set('example', 'nico-nico') }.to change{ kvs.keys.length }.by(1)
         end
       end
 
@@ -156,6 +156,19 @@ shared_examples_for 'RailsKvsDriver example' do |driver_class, driver_config|
 
 
     context 'inheritance methods' do
+      it 'call []' do
+        driver_class::session(driver_config) do |kvs|
+          kvs['example'] = 'nico-nico'
+          expect(kvs['example']).to  eq('nico-nico')
+          expect(kvs['nothing key']).to be_nil
+        end
+      end
+
+      it 'call []=' do
+        driver_class::session(driver_config) do |kvs|
+          expect{ kvs['example'] = 'nico-nico' }.to change{ kvs.keys.length }.by(1)
+        end
+      end
 
       it 'call each' do
         driver_class::session(driver_config) do |kvs|

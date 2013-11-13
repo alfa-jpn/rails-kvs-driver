@@ -38,7 +38,7 @@ module RailsKvsDriver
     # @param key [String] key.
     # @return [String] value. when doesn't exist, nil
     # @abstract get value from kvs. when doesn't exist, nil
-    def [](key)
+    def get(key)
       raise NoMethodError
     end
 
@@ -47,7 +47,7 @@ module RailsKvsDriver
     # @param value  [String] value.
     # @return [Boolean] result
     # @abstract set value to kvs.
-    def []=(key, value)
+    def set(key, value)
       raise NoMethodError
     end
 
