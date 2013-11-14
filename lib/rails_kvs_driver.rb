@@ -75,7 +75,7 @@ module RailsKvsDriver
 
 
     #--------------------
-    # list
+    # list (same as list of redis. refer to redis.)
     #--------------------
 
     # count value of the list.
@@ -106,6 +106,14 @@ module RailsKvsDriver
       raise NoMethodError
     end
 
+    # get all keys of existed list.
+    #
+    # @return [Array<String>] keys.
+    # @abstract get all keys of existed list.
+    def get_list_keys
+      raise NoMethodError
+    end
+
     # get value from index of the list.
     # when the key doesn't exist, return nil.
     #
@@ -117,11 +125,16 @@ module RailsKvsDriver
       raise NoMethodError
     end
 
-    # get all keys of existed list.
+    # get values from index of the list.
+    # @example get_list_value(:key) => get all.
+    # @example get_list_value(:key, 5, 10) => 5~10 return total 6 values.
     #
-    # @return [Array<String>] keys.
-    # @abstract get all keys of existed list.
-    def get_list_keys
+    # @param key    [String]  key of the list.
+    # @param start  [Integer] start index of the list.
+    # @param stop   [Integer] end index of the list.
+    # @return [Array<String>] value.
+    # @abstract get values from index of the list.
+    def get_list_values(key, start=0, stop=-1)
       raise NoMethodError
     end
 
@@ -180,7 +193,7 @@ module RailsKvsDriver
 
 
     #--------------------
-    # sorted set
+    # sorted set (same as sorted set of redis. refer to redis.)
     #--------------------
 
     # add sorted set to kvs.

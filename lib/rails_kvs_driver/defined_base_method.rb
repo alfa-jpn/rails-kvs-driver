@@ -1,7 +1,10 @@
 require 'rails_kvs_driver/sorted_sets/sorted_sets'
+require 'rails_kvs_driver/common_methods/keys'
 
 module RailsKvsDriver
   module DefinedBaseMethod
+    include RailsKvsDriver::CommonMethods::Keys
+
     # initialize driver.
     # @param kvs_instance  [Object] instance of key-value store.
     # @param driver_config [Hash]   driver config.
@@ -27,32 +30,18 @@ module RailsKvsDriver
       set(key, value)
     end
 
-    # return initialized SortedSet class.
+    # return initialized SortedSets class.
     #
-    # @return [RailsKvsDriver::SortedSets] SortedSet
+    # @return [RailsKvsDriver::SortedSets::SortedSets] SortedSets
     def sorted_sets
       SortedSets::SortedSets.new(self)
     end
 
-    # execute the block of code for each key having string, and value.
-    # @param &block   [{|key, value| }] each the block of code for each key having string, and value.
-    def each
-      keys.each {|key| yield key, self[key] }
-    end
-
-    # check key in redis.
+    # return initialized lists class.
     #
-    # @param key [String] key name
-    # @return [Boolean] result
-    def has_key?(key)
-      !(self[key].nil?)
-    end
-
-    # get length of keys.
-    #
-    # @return [Integer]length of keys.
-    def length
-      keys.length
+    # @return [RailsKvsDriver::Lists::Lists] lists
+    def lists
+      Lists::Lists.new(self)
     end
 
   end

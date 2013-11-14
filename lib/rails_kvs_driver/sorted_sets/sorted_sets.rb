@@ -1,8 +1,11 @@
 require 'rails_kvs_driver/sorted_sets/sorted_set'
+require 'rails_kvs_driver/common_methods/keys'
 
 module RailsKvsDriver
   module SortedSets
     class SortedSets
+      include RailsKvsDriver::CommonMethods::Keys
+
       attr_accessor :driver_instance
 
       # initialize sorted_sets
@@ -28,7 +31,7 @@ module RailsKvsDriver
       # @return [Array<Array<member,score>>] meber_sets
       def []=(key, member_sets)
         delete(key) if has_key?(key)
-        sorted_set = SortedSet.new(@driver_instance,key)
+        sorted_set = self[key]
         member_sets.each {|member_set| sorted_set[member_set[0]] = member_set[1]}
       end
 
@@ -39,33 +42,11 @@ module RailsKvsDriver
         @driver_instance.delete(key)
       end
 
-      # execute the block of code for each sorted_set.
-      #
-      # @param &block   [{|key| }] each the block of code for each key of sorted set.
-      def each
-        keys.each {|key| yield key }
-      end
-
-      # check key in sorted set.
-      #
-      # @param key [String] key name.
-      # @return [Boolean] result.
-      def has_key?(key)
-        keys.include?(key)
-      end
-
       # get all keys from kvs.
       #
       # @return [Array<String>] array of key names.
       def keys
         @driver_instance.get_sorted_set_keys
-      end
-
-      # get length of sorted_set.
-      #
-      # @return [Integer] length of keys.
-      def length
-        keys.length
       end
 
     end
