@@ -72,6 +72,117 @@ module RailsKvsDriver
       raise NoMethodError
     end
 
+
+
+    #--------------------
+    # list
+    #--------------------
+
+    # count value of the list.
+    # when the key doesn't exist, return 0.
+    #
+    # @param key [String] key of the list.
+    # @return [Integer] number.
+    # @abstract count value of the list.
+    def count_list_value(key)
+      raise NoMethodError
+    end
+
+    # delete value from list.
+    #
+    # @param key    [String] key of the list.
+    # @param value  [String] delete value.
+    # @abstract delete value from list.
+    def delete_list_value(key, value)
+      raise NoMethodError
+    end
+
+    # delete at index from list.
+    #
+    # @param key    [String] key of the list.
+    # @param index  [Integer] index of the list.
+    # @abstract delete at index from list.
+    def delete_list_value_at(key, index)
+      raise NoMethodError
+    end
+
+    # get value from index of the list.
+    # when the key doesn't exist, return nil.
+    #
+    # @param key    [String] key of the list.
+    # @param index  [Integer] index of the list.
+    # @return [String] value.
+    # @abstract get value from index of the list.
+    def get_list_value(key, index)
+      raise NoMethodError
+    end
+
+    # get all keys of existed list.
+    #
+    # @return [Array<String>] keys.
+    # @abstract get all keys of existed list.
+    def get_list_keys
+      raise NoMethodError
+    end
+
+    # push value to first of the list.
+    # when the key doesn't exist, it's made newly list.
+    #
+    # @param key    [String] key of list.
+    # @param value  [String] push value.
+    # @return [Integer] length of list after push.
+    # @abstract push value to first of the list.
+    def push_list_first(key, value)
+      raise NoMethodError
+    end
+
+    # push value to last of the list.
+    # when the key doesn't exist, it's made newly list.
+    #
+    # @param key    [String] key of list.
+    # @param value  [String] push value.
+    # @return [Integer] length of list after push.
+    # @abstract push value to last of the list.
+    def push_list_last(key, value)
+      raise NoMethodError
+    end
+
+    # pop value from first of the list.
+    # when the key doesn't exist or is empty. return nil.
+    #
+    # @param key [String] key of the list.
+    # @return [String] value of the key.
+    # @abstract pop value from first of the list.
+    def pop_list_first(key)
+      raise NoMethodError
+    end
+
+    # pop value from first of the list.
+    # when the key doesn't exist or is empty. return nil.
+    #
+    # @param key [String] key of the list.
+    # @return [String] value of the key.
+    # @abstract pop value from last of the list.
+    def pop_list_last(key)
+      raise NoMethodError
+    end
+
+    # set value to index of the list.
+    #
+    # @param key    [String] key of the list.
+    # @param index  [Integer] index of the list.
+    # @param value  [String] set value.
+    # @abstract set value to index of the list.
+    def set_list_value(key, index, value)
+      raise NoMethodError
+    end
+
+
+
+    #--------------------
+    # sorted set
+    #--------------------
+
     # add sorted set to kvs.
     # when the key doesn't exist, it's made newly.
     # @note same as sorted set of redis. refer to redis.
