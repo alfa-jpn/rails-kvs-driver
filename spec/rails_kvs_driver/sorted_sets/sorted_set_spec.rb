@@ -51,6 +51,10 @@ describe RailsKvsDriver::SortedSets::SortedSet do
     expect( @driver.sorted_sets[:key].increment(:b, 1) ).to eq(10)
   end
 
+  it 'call decrement' do
+    expect( @driver.sorted_sets[:key].decrement(:b, 1) ).to eq(10)
+  end
+
   it 'call length' do
     expect(@driver.sorted_sets[:key].length).to eq(100)
   end

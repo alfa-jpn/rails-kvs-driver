@@ -68,6 +68,15 @@ module RailsKvsDriver
         @driver_instance.increment_sorted_set(@key, member, score)
       end
 
+      # decrement member's score of sorted set.
+      #
+      # @param member [String]  member of sorted set.
+      # @param score  [Float]   decrement score
+      # @return [Float] score after decrement.
+      def decrement(member, score)
+        @driver_instance.increment_sorted_set(@key, member, score*-1)
+      end
+
       # length of sorted_set
       #
       # @return [Integer] length of sorted_set
