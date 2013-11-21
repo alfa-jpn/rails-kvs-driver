@@ -1,9 +1,12 @@
 require 'rails_kvs_driver/lists/list'
-require 'rails_kvs_driver/common_methods/keys'
+require 'rails_kvs_driver/common_methods/listable'
 
 module RailsKvsDriver
   module Lists
     class Lists
+      include RailsKvsDriver::CommonMethods::Listable
+      include Enumerable
+
       attr_accessor :driver_instance
 
       # initialize lists
@@ -18,7 +21,7 @@ module RailsKvsDriver
       # @param key    [String] sorted_set key.
       # @return [SortedSet] sorted_set of key.
       def [](key)
-        List.new(@driver_instance, key)
+        RailsKvsDriver::Lists::List.new(@driver_instance, key)
       end
 
       # add new list.

@@ -1,3 +1,4 @@
+require 'rails_kvs_driver/lists/lists'
 require 'rails_kvs_driver/sorted_sets/sorted_sets'
 require 'rails_kvs_driver/common_methods/listable'
 

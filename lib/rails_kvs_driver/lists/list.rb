@@ -110,6 +110,7 @@ module RailsKvsDriver
       end
 
 
+      alias size length
     end
   end
 end

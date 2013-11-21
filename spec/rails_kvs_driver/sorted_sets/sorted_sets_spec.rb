@@ -22,12 +22,12 @@ describe RailsKvsDriver::SortedSets::SortedSets do
   end
 
   it 'call []' do
-    sorted_set = [['member', 1],['member', 2]]
-    expect(@driver.sorted_sets[:key] = sorted_set).to eq(sorted_set)
+    expect((@driver.sorted_sets[:key]).instance_of?(RailsKvsDriver::SortedSets::SortedSet)).to be_true
   end
 
   it 'call []=' do
-    expect((@driver.sorted_sets[:key]).instance_of?(RailsKvsDriver::SortedSets::SortedSet)).to be_true
+    sorted_set = [['member', 1],['member', 2]]
+    expect(@driver.sorted_sets[:key] = sorted_set).to eq(sorted_set)
   end
 
   it 'call delete' do

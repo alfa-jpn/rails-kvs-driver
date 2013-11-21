@@ -22,11 +22,11 @@ describe RailsKvsDriver::SortedSets::SortedSet do
   end
 
   it 'call []' do
-    expect(@driver.sorted_sets[:key][:member] = 1).to eq(1)
+    expect(@driver.sorted_sets[:key][:member]).to eq(100)
   end
 
   it 'call []=' do
-    expect(@driver.sorted_sets[:key][:member]).to eq(100)
+    expect(@driver.sorted_sets[:key][:member] = 1).to eq(1)
   end
 
   it 'call length' do
