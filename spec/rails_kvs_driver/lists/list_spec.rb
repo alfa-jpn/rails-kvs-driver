@@ -46,9 +46,24 @@ describe RailsKvsDriver::Lists::List do
     }.to change{count}.by(100)
   end
 
+  it 'call include?' do
+    expect(@driver.lists[:key].include?(:Nyarukosan)).to be_true
+  end
+
   it 'call length' do
     expect(@driver.lists[:key].length).to eq(100)
   end
+
+  it 'call push_*' do
+    expect(@driver.lists[:key].push_first('Nyarukosan')).to eq(5)
+    expect(@driver.lists[:key].push_last('Nyarukosan')).to eq(5)
+  end
+
+  it 'call push_*' do
+    expect(@driver.lists[:key].pop_first).to eq('Nyarukosan')
+    expect(@driver.lists[:key].pop_last).to eq('Nyarukosan')
+  end
+
 
   it 'call size' do
     expect(@driver.lists[:key].size).to eq(100)

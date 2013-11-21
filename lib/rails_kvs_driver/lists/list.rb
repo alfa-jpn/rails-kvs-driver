@@ -66,7 +66,7 @@ module RailsKvsDriver
       # @param value [String] value
       # @return [Boolean] result
       def include?(value)
-        each do |list_value|
+        each do |index, list_value|
           return true if list_value == value
         end
         return false
@@ -81,7 +81,7 @@ module RailsKvsDriver
       # when the key doesn't exist, it's made newly list.
       #
       # @param value [String] value.
-      def push_fist(value)
+      def push_first(value)
         @driver_instance.push_list_first(@key, value)
       end
 
