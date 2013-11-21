@@ -3,6 +3,8 @@ require 'rails_kvs_driver/sorted_sets/sorted_set'
 module RailsKvsDriver
   module SortedSets
     class SortedSets
+      include Enumerable
+
       attr_accessor :driver_instance
 
       # initialize sorted_sets
@@ -68,6 +70,7 @@ module RailsKvsDriver
         keys.length
       end
 
+      alias size length
     end
   end
 end

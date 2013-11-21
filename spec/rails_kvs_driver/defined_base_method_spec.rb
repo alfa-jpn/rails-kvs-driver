@@ -28,6 +28,10 @@ describe RailsKvsDriver::DefinedBaseMethod do
       })
     end
 
+    it 'call methods of Enumerable' do
+      expect(@instance.count).to eq(3)
+    end
+
     it 'call each' do
       count = 0
       expect{
@@ -37,12 +41,20 @@ describe RailsKvsDriver::DefinedBaseMethod do
       }.to change{count}.by(3)
     end
 
+    it 'call empty?' do
+      expect(@instance.empty?).to be_false
+    end
+
     it 'call has_key?' do
       expect(@instance.has_key?(:a)).to be_true
     end
 
     it 'call length' do
       expect(@instance.length).to eq(3)
+    end
+
+    it 'call size' do
+      expect(@instance.size).to eq(3)
     end
   end
 end

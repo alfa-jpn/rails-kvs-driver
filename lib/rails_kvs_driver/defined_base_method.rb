@@ -2,6 +2,8 @@ require 'rails_kvs_driver/sorted_sets/sorted_sets'
 
 module RailsKvsDriver
   module DefinedBaseMethod
+    include Enumerable
+
     # initialize driver.
     # @param kvs_instance  [Object] instance of key-value store.
     # @param driver_config [Hash]   driver config.
@@ -40,6 +42,13 @@ module RailsKvsDriver
       keys.each {|key| yield key, self[key] }
     end
 
+    # kvs check empty.
+    #
+    # @return [Boolean] result.
+    def empty?
+      (length<1)
+    end
+
     # check key in redis.
     #
     # @param key [String] key name
@@ -55,5 +64,7 @@ module RailsKvsDriver
       keys.length
     end
 
+
+    alias size length
   end
 end
