@@ -1,9 +1,10 @@
 require 'rails_kvs_driver/sorted_sets/sorted_sets'
-require 'rails_kvs_driver/common_methods/keys'
+require 'rails_kvs_driver/common_methods/listable'
 
 module RailsKvsDriver
   module DefinedBaseMethod
-    include RailsKvsDriver::CommonMethods::Keys
+    include RailsKvsDriver::CommonMethods::Listable
+    include Enumerable
 
     # initialize driver.
     # @param kvs_instance  [Object] instance of key-value store.
@@ -43,6 +44,5 @@ module RailsKvsDriver
     def lists
       Lists::Lists.new(self)
     end
-
   end
 end

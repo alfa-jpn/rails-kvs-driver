@@ -17,6 +17,10 @@ describe RailsKvsDriver::SortedSets::SortedSets do
     })
   end
 
+  it 'call methods of Enumerable' do
+    expect(@driver.sorted_sets.count).to eq(3)
+  end
+
   it 'call []' do
     sorted_set = [['member', 1],['member', 2]]
     expect(@driver.sorted_sets[:key] = sorted_set).to eq(sorted_set)
@@ -49,6 +53,10 @@ describe RailsKvsDriver::SortedSets::SortedSets do
 
   it 'call length' do
     expect(@driver.sorted_sets.length).to eq(3)
+  end
+
+  it 'call size' do
+    expect(@driver.sorted_sets.size).to eq(3)
   end
 
 end

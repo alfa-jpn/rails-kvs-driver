@@ -1,6 +1,8 @@
 module RailsKvsDriver
   module SortedSets
     class SortedSet
+      include Enumerable
+
       attr_accessor :driver_instance
       attr_accessor :key
 
@@ -38,7 +40,7 @@ module RailsKvsDriver
       # @param reverse  [Boolean] order by desc. (default=false(acs))
       # @param limit    [Integer] limit number to acquire at a time. (default=1000)
       # @param &block   [{|member, score, position| }] each the block of code for each member of sorted set.
-      def each(reverse=false, limit=1000)
+      def each(reverse = false, limit = 1000)
         count    = length
         position = 0
 
@@ -88,6 +90,7 @@ module RailsKvsDriver
         @driver_instance.remove_sorted_set(@key, member)
       end
 
+      alias size length
     end
   end
 end

@@ -17,6 +17,10 @@ describe RailsKvsDriver::SortedSets::SortedSet do
     })
   end
 
+  it 'call methods of Enumerable' do
+    expect(@driver.sorted_sets[:key].count).to eq(100)
+  end
+
   it 'call []' do
     expect(@driver.sorted_sets[:key][:member] = 1).to eq(1)
   end
@@ -58,4 +62,9 @@ describe RailsKvsDriver::SortedSets::SortedSet do
   it 'call remove' do
     expect(@driver.sorted_sets[:key].remove(:b)).to be_true
   end
+
+  it 'call size' do
+    expect(@driver.sorted_sets[:key].size).to eq(100)
+  end
+
 end

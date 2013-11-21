@@ -1,10 +1,11 @@
 require 'rails_kvs_driver/sorted_sets/sorted_set'
-require 'rails_kvs_driver/common_methods/keys'
+require 'rails_kvs_driver/common_methods/listable'
 
 module RailsKvsDriver
   module SortedSets
     class SortedSets
-      include RailsKvsDriver::CommonMethods::Keys
+      include RailsKvsDriver::CommonMethods::Listable
+      include Enumerable
 
       attr_accessor :driver_instance
 
